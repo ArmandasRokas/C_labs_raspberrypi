@@ -4,6 +4,8 @@
 
 int main(int argc, char** argv)
 {
+//	FILE * fptr;
+	
 	printf("Arguments were passed to main():\n");
 	for(int i=0; i<argc; i++){
 		printf("argv[%d] = %s \n", i , argv[i]);
@@ -19,15 +21,17 @@ int main(int argc, char** argv)
     
     
  //   IplImage* image = cvLoadImage(argv[1], CV_LOAD_IMAGE_COLOR);
- //   IplImage* image2 = cvLoadImage(argv[1], CV_LOAD_IMAGE_COLOR);
     IplImage* image = cvLoadImage(argv[1], 0);
     
     
 //    cvCvtColor(image, image2, CV_8U);
     cvSaveImage("test_grey.jpg", image, 0);
     
-    printf("Height: %d \n Width: %d\n", image->height, image->width);
-      
+    
+    printf("Height: %d \nWidth: %d\n", image->height, image->width);
+
+    printf("%d \n", (int) image->imageData[image->height*image->width-1]);
+    // image->height*image->width-1 last pixel  
     
 	
 	return 0;
