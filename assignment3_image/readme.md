@@ -6,13 +6,13 @@
 * `HISTOGRAM.SOL` - is just text file of output	
 * `CV_RGB2GRAY` - code to convert	
 
-
-### References	
-[Image attributes](https://docs.opencv.org/3.4/d6/d5b/structIplImage.html#ab6315f84a34002b616a187f87999f167)  
-[color.hpp repo](https://github.com/opencv/opencv/blob/master/modules/imgproc/src/color.hpp)  
-[cvCvtColor docs](https://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html#cvtcolor)
 ### Questions
 
 ### TODO 
 * Write to File
 * Calculate intensity
+
+### References	
+[Image attributes](https://docs.opencv.org/3.4/d6/d5b/structIplImage.html#ab6315f84a34002b616a187f87999f167)  
+[color.hpp repo](https://github.com/opencv/opencv/blob/master/modules/imgproc/src/color.hpp)  
+[cvCvtColor docs](https://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html#cvtcolor)
