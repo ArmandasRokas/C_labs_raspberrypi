@@ -28,7 +28,7 @@ Exampel show that while increasing a new pointer, it does not effect orginal poi
 	printf("After increasing \nOrginal pointer: %p \nMy pointer: %p \n", image->imageData, myNewLocalImageData);
  	printf("Height: %d \nWidth: %d\n", image->height, image->width);
 ``` 
-### Last pixel
+### Last pixel in image->imageDate array
 ```C
 image->height*image->width-1 
 ```
