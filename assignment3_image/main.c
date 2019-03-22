@@ -1,10 +1,19 @@
 #include "opencv2/highgui/highgui.hpp"
 #include <stdio.h>
-
+#include <stdlib.h>
+#define SIZE 256
 
 int main(int argc, char** argv)
 {
-//	FILE * fptr;
+	FILE * fptr;
+	fptr = fopen("HISTOGRAM.SOL", "w");
+	if(fptr == NULL){
+			printf("File does not exists \n");
+			return -1;
+	}
+
+	int intensities[SIZE] = {0};
+	int numOfDistinctIntensities;
 	
 	printf("Arguments were passed to main():\n");
 	for(int i=0; i<argc; i++){
@@ -18,21 +27,29 @@ int main(int argc, char** argv)
         return -1;
     }
     
-    
-    
- //   IplImage* image = cvLoadImage(argv[1], CV_LOAD_IMAGE_COLOR);
     IplImage* image = cvLoadImage(argv[1], 0);
+    int numTotalPixels = image->height*image->width;
     
-    
-//    cvCvtColor(image, image2, CV_8U);
-    cvSaveImage("test_grey.jpg", image, 0);
-    
-    
-    printf("Height: %d \nWidth: %d\n", image->height, image->width);
+    for(int i = 0; i < numTotalPixels; i++){
+			int currIntensity = image->imageData[i];
+			intensities[currIntensity]++; // uses current intensity value as an index 
+	}
 
-    printf("%d \n", (int) image->imageData[image->height*image->width-1]);
-    // image->height*image->width-1 last pixel  
-    
+	// Counts distinct intensities
+	for(int i = 0; i < SIZE; i++){
+		if(intensities[i] != 0){
+			numOfDistinctIntensities++;
+		}
+	}
+	fprintf(fptr, "%d\n", numOfDistinctIntensities);   // Writes distinct intensities		    
+	fprintf(fptr, "%dx%d\n", image->width, image->height); // Writes resolution
 	
+    for(int i = 0; i < SIZE; i++){
+		if(intensities[i] != 0){
+			fprintf(fptr, "%d %d\n", i, intensities[i]); // Writes intensities
+		}
+	}
+	fclose(fptr);
+    
 	return 0;
 }
