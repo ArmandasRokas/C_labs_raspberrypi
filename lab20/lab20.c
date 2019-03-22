@@ -39,6 +39,7 @@ int main( int argc, char** argv )
          printf("Could not open or find the image\n") ;
         return -1;
     }
+    
 
     /* display image in window */
     cvNamedWindow("MyWindow_Name",CV_WINDOW_AUTOSIZE); // Create a window for display.
