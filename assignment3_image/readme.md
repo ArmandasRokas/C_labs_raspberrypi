@@ -25,5 +25,5 @@
 	printf("Orginal pointer: %p \nMy pointer: %p \n", image->imageData, imageData);  
 	imageData++;
 	printf("After increasing\n Orginal pointer: %p \nMy pointer: %p \n", image->imageData, imageData);
- printf("Height: %d \nWidth: %d\n", image->height, image->width);
-    ```
+ 	printf("Height: %d \nWidth: %d\n", image->height, image->width);
+``` 
