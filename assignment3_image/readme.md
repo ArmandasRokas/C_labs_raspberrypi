@@ -11,6 +11,7 @@
 ### TODO 
 * Write to File
 * Calculate intensity
+  * We know that it only 256 different color. So we can make an array of this size and add counter ++ if the intensity is found. After that just do some print out the values. 
 
 ### References	
 [Image attributes](https://docs.opencv.org/3.4/d6/d5b/structIplImage.html#ab6315f84a34002b616a187f87999f167)  
