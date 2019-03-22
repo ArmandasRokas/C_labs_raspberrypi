@@ -20,12 +20,12 @@
 
 ### Diverse
 #### Testing of creating local pointer
+Exampel show that while increasing a new pointer, it does not effect orginal pointer. So we can safetly increase that. 
 ```C
-	char * imageData = image->imageData;
-	printf("Orginal pointer: %p \nMy pointer: %p \n", image->imageData, imageData);  
+	char * myNewLocalImageData = image->imageData;
+	printf("Orginal pointer: %p \nMy pointer: %p \n", image->imageData, myNewLocalImageData);  
 	imageData++;
-	printf("After increasing\n Orginal pointer: %p \nMy pointer: %p \n", image->imageData, imageData);
+	printf("After increasing \nOrginal pointer: %p \nMy pointer: %p \n", image->imageData, myNewLocalImageData);
  	printf("Height: %d \nWidth: %d\n", image->height, image->width);
 ``` 
 
-dsds
