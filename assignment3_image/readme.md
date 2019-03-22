@@ -7,7 +7,7 @@
 * `CV_RGB2GRAY` - code to convert	
 
 ### Questions
-
+* How to check sizeof(image), but not address size. 
 ### TODO 
 * Write to File
 * Calculate intensity
