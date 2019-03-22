@@ -27,3 +27,5 @@
 	printf("After increasing\n Orginal pointer: %p \nMy pointer: %p \n", image->imageData, imageData);
  	printf("Height: %d \nWidth: %d\n", image->height, image->width);
 ``` 
+
+dsds
