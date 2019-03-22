@@ -19,7 +19,7 @@
 [cvCvtColor docs](https://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html#cvtcolor)
 
 ### Diverse
-#### Testing of creating local pointer
+#### Testing of creating a local pointer
 Exampel show that while increasing a new pointer, it does not effect orginal pointer. So we can safetly increase that. 
 ```C
 	char * myNewLocalImageData = image->imageData;
