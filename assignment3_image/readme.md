@@ -8,7 +8,7 @@
 
 
 ### References	
-[image attributes](https://docs.opencv.org/3.4/d6/d5b/structIplImage.html#ab6315f84a34002b616a187f87999f167)
+[Image attributes](https://docs.opencv.org/3.4/d6/d5b/structIplImage.html#ab6315f84a34002b616a187f87999f167)
 ### Questions
 
 ### TODO 
