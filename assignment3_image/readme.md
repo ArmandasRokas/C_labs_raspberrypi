@@ -6,13 +6,11 @@
 * `HISTOGRAM.SOL` - is just text file of output	
 * `CV_RGB2GRAY` - code to convert	
 
+* We know that it only 256 different color. So we can make an array of this size and add counter ++ if the intensity is found. After that just do some print out the values. 
+
 ### Questions
 * How to check sizeof(image), but not address size. 
-* Skal man skrive en rapport?
-### TODO 
-* Write to File
-* Calculate intensity
-  * We know that it only 256 different color. So we can make an array of this size and add counter ++ if the intensity is found. After that just do some print out the values. 
+* Skal man skrive en rapport?  
 
 ### References	
 [Image attributes](https://docs.opencv.org/3.4/d6/d5b/structIplImage.html#ab6315f84a34002b616a187f87999f167)  
