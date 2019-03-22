@@ -4,6 +4,7 @@
 * `Intensity` in grey picture  - color between 0-255
 * `Number of pixel`- how many pixel has that color (intensity)
 * `HISTOGRAM.SOL` - is just text file of output
+* `CV_RGB2GRAY` - code to convert
 
 
 ### Diverse
