@@ -7,10 +7,8 @@
 * `CV_RGB2GRAY` - code to convert	
 
 
- ### Diverse	
-`raspistill -e bmp -o image.bmp	`
-
- https://stackoverflow.com/questions/12800384/pixel-intensity-in-opencv. 	
+### References	
+[image attributes](https://docs.opencv.org/3.4/d6/d5b/structIplImage.html#ab6315f84a34002b616a187f87999f167)
 ### Questions
 
 ### TODO 
