@@ -8,6 +8,7 @@
 
 ### Questions
 * How to check sizeof(image), but not address size. 
+* Skal man skrive en rapport?
 ### TODO 
 * Write to File
 * Calculate intensity
