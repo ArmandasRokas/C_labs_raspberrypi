@@ -22,18 +22,23 @@ int main()
 	
 	if( capture )
 	{
-		//while(1)
-		//{
-			IplImage* currFrame = cvQueryFrame( capture );
+		IplImage* currFrame = 0;
+		IplImage* prevFrame = 0;
+		currFrame = cvQueryFrame( capture );
+		prevFrame = cvCloneImage(currFrame);
+		while(1)
+		{
+			currFrame = cvQueryFrame(capture);
+			//IplImage* currFrame = cvQueryFrame( capture );
 			
 			
-			if(!currFrame){
+		//	if(!currFrame){
 			//	break;
-			}
-			sleep(1);
-			IplImage* prevFrame = cvCloneImage(currFrame);
-			sleep(1);
-			currFrame = cvQueryFrame( capture );
+		//	}
+		//	sleep(1);
+			//IplImage* prevFrame = cvCloneImage(currFrame);
+		//	sleep(1);
+		//	currFrame = cvQueryFrame( capture );
 	
 			if(compareImages(currFrame,prevFrame)){
 				printf("catch");
@@ -41,12 +46,13 @@ int main()
 			printf("Wroking\n");
 			//sleep(1);
 
-			cvShowImage( "Video", currFrame );
+		//	cvShowImage( "Video", currFrame );
 			
 			// Press 'c' to escape
 		//	c = cvWaitKey(100);
-		//	if( (char)c == 'c' ) { break; }			
-		//}
+		//	if( (char)c == 'c' ) { break; }		
+			cvCopy(currFrame, prevFrame, NULL);
+		}
 	}
 	
 	cvReleaseCapture( &capture ); // release memory.	
@@ -61,8 +67,8 @@ int main()
  * Return 0, if there are no differences
  * ***************************************************/
 int compareImages(IplImage * image1, IplImage * image2){
-	cvSaveImage("image_test1.jpg", image1, 0);
-	cvSaveImage("image_test2.jpg", image2, 0);
+	//cvSaveImage("image_test1.jpg", image1, 0);
+	//cvSaveImage("image_test2.jpg", image2, 0);
 	IplImage* res = cvCreateImage(cvGetSize(image1), 8, 3);
 	
 	cvAbsDiff(image1,image2,res);
@@ -71,14 +77,16 @@ int compareImages(IplImage * image1, IplImage * image2){
     cvCvtColor(res, gray_res, CV_RGB2GRAY );
 	int count = 0;
 	for(int i = 0; i < res->height*res->width;i++){
-	  if(gray_res->imageData[i] > 100){
+	  if(gray_res->imageData[i] > 50){
 		count++;
 	  }
 	}
-	if(count>0){
-		printf("Count more than0\n");
+	cvReleaseImage(&res);   // OutOfMemoryError without releases
+	cvReleaseImage(&gray_res);
+	if(count > 0){ 
 		return 1;
 	} else{
 		return 0;
 	}
+	
 }
