@@ -27,7 +27,8 @@ int main(int argc, char** argv)
         return -1;
     }
     
-    IplImage* image = cvLoadImage(argv[1], 0);
+    IplImage* image = cvLoadImage(argv[1], 0);  // color image CV_LOAD_IMAGE_COLOR
+    // cvCvtColor(image, image, ???? ); 
     int numTotalPixels = image->height*image->width;
     
     for(int i = 0; i < numTotalPixels; i++){
