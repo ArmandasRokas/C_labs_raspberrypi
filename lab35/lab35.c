@@ -22,8 +22,8 @@
 int main( int argc, char** argv )
 {
 	
-    IplImage* image1 = cvLoadImage("photo-1.jpg", CV_LOAD_IMAGE_COLOR);  // Loads an image from a file.
-	IplImage* image2 = cvLoadImage("photo-2.jpg", CV_LOAD_IMAGE_COLOR);  // Loads an image from a file.
+    IplImage* image1 = cvLoadImage("image.jpg", CV_LOAD_IMAGE_COLOR);  // Loads an image from a file.
+	IplImage* image2 = cvLoadImage("image1.jpg", CV_LOAD_IMAGE_COLOR);  // Loads an image from a file.
 
     if(image1== NULL) // Check for invalid input
     {
@@ -54,7 +54,7 @@ int main( int argc, char** argv )
   int pixels = 0;
   for(int i = 0; i < res->height*res->width;i++){
 	  pixels++;
-	  if(gray_res->imageData[i] > 0){
+	  if(gray_res->imageData[i] > 50){
 		count++;
 	  }
   }
@@ -63,7 +63,7 @@ int main( int argc, char** argv )
    // printf("Image intesity: %d",res->imageData[10000]);
     
     cvNamedWindow("ResultWindow",CV_WINDOW_AUTOSIZE); // Create a window for display.
-    cvShowImage("ResultWindow",res); // Show our image inside window.
+    cvShowImage("ResultWindow",gray_res); // Show our image inside window.
              
                                          
     cvWaitKey(0);    // Wait for a keystroke in the window
