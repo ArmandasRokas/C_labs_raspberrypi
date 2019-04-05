@@ -1,7 +1,9 @@
 #include "opencv2/highgui/highgui.hpp"
 #include <stdio.h>
 #include <stdlib.h>
+#include "opencv/cv.h"
 #define SIZE 256
+
 
 int main(int argc, char** argv)
 {
@@ -27,8 +29,9 @@ int main(int argc, char** argv)
         return -1;
     }
     
-    IplImage* image = cvLoadImage(argv[1], 0);  // color image CV_LOAD_IMAGE_COLOR
-    // cvCvtColor(image, image, ???? ); 
+    IplImage* color_image = cvLoadImage(argv[1], CV_LOAD_IMAGE_COLOR);  // color image CV_LOAD_IMAGE_COLOR
+    IplImage* image = cvCreateImage(cvGetSize(color_image), 8, 1);
+    cvCvtColor(color_image, image, CV_RGB2GRAY ); 
     int numTotalPixels = image->height*image->width;
     
     for(int i = 0; i < numTotalPixels; i++){

@@ -7,6 +7,7 @@
 
 #include "opencv2/highgui/highgui.hpp" //  required for OpenCV functions
 #include <stdio.h>                     // Standard I/O - required for printf() function
+#include <stdlib.h>
 
  
 /*===============================================================================
@@ -18,6 +19,7 @@
 ===============================================================================*/
 int main( void)
 {
+	
 	CvScalar color;
 	CvScalar bkgnd_color;
 	CvFont base_font;
