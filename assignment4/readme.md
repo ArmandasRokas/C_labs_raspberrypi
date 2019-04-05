@@ -3,6 +3,14 @@
 Dvs. Når jeg laver cvAbsDiff og tjekker intensities, så alle mere er end nul. Så skal jeg selv vurdere hvor meget skal jeg ignorere? 
 Dvs. hvis intensity mere end 50, så skal jeg betragte som forskel.  
 
+## Issues
+```c
+			IplImage* frame1 = cvQueryFrame( capture );
+			sleep(1);
+			IplImage* frame2 = cvQueryFrame( capture );
+```
+The same picture....
+
 ## Errors
 ### Comparing two frames
 ```
