@@ -22,8 +22,8 @@
 int main( int argc, char** argv )
 {
 	
-    IplImage* image1 = cvLoadImage("black-white_1.jpg", CV_LOAD_IMAGE_COLOR);  // Loads an image from a file.
-	IplImage* image2 = cvLoadImage("black-white_2.jpg", CV_LOAD_IMAGE_COLOR);  // Loads an image from a file.
+    IplImage* image1 = cvLoadImage("photo-1.jpg", CV_LOAD_IMAGE_COLOR);  // Loads an image from a file.
+	IplImage* image2 = cvLoadImage("photo-2.jpg", CV_LOAD_IMAGE_COLOR);  // Loads an image from a file.
 
     if(image1== NULL) // Check for invalid input
     {
@@ -35,17 +35,33 @@ int main( int argc, char** argv )
         printf("Could not open or find the image2\n") ;
         return -1;
     }
+  //  printf("%d %d", image1->height, image1->width);
 
-    IplImage* res = cvCreateImage(cvSize(300, 300), 8, 3);
+    IplImage* res = cvCreateImage(cvGetSize(image1), 8, 3);
 	//IplImage* res = cvCreateImage(cvSize(*, *), 8, 3);
-	
-	cvAnd(image1, image2, res,  NULL);
+	cvAbsDiff(image1,image2,res);
+	//cvAnd(image1, image2, res,  NULL);
 	//cvNot(image1, res);
 	//cvOr(image1, image2, res,  NULL);
 	//cvXor(image1, image2, res,  NULL);
 	// use function cvAbsDiff  //Calculates the per-element absolute difference between two arrays
 	
     // display image in window 
+    
+    IplImage* gray_res = cvCreateImage(cvGetSize(res), 8, 1);
+    cvCvtColor(res, gray_res, CV_RGB2GRAY );
+  int count = 0;
+  int pixels = 0;
+  for(int i = 0; i < res->height*res->width;i++){
+	  pixels++;
+	  if(gray_res->imageData[i] > 0){
+		count++;
+	  }
+  }
+  printf("Num of total pixels: %d\n", pixels);
+  printf("Num of different pixels: %d\n", count);
+   // printf("Image intesity: %d",res->imageData[10000]);
+    
     cvNamedWindow("ResultWindow",CV_WINDOW_AUTOSIZE); // Create a window for display.
     cvShowImage("ResultWindow",res); // Show our image inside window.
              
