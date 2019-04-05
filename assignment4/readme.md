@@ -3,7 +3,7 @@
 Dvs. Når jeg laver cvAbsDiff og tjekker intensities, så alle mere er end nul. Så skal jeg selv vurdere hvor meget skal jeg ignorere? 
 Dvs. hvis intensity mere end 50, så skal jeg betragte som forskel.  
 	- Det vil jo være næsten umuligt i skoven, da alt ændre sig. Blader, belysninger., camera bevægelser osv.
-
+- Er det okey, at jeg convereterer absDiff til gray billede?
 ## Issues
 ```c
 			IplImage* frame1 = cvQueryFrame( capture );
