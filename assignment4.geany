@@ -20,6 +20,8 @@ indent_mode=2
 [project]
 name=assignment4
 base_path=/home/pi/lab/assignment4/
+description=
+file_patterns=
 
 [long line marker]
 long_line_behaviour=1
@@ -27,6 +29,13 @@ long_line_column=72
 
 [files]
 current_page=0
+FILE_NAME_0=1256;C;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Flab%2Fassignment4%2Fmain.c;0;4
 
 [VTE]
 last_dir=/home/pi
+
+[build-menu]
+CFT_01_LB=_Build
+CFT_01_CM=gcc -Wall -g -o "%e" "%f" `pkg-config --cflags --libs opencv`
+CFT_01_WD=
+filetypes=C;

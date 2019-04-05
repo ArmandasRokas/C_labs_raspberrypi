@@ -8,7 +8,7 @@
 
 int main()
 {
-	CvCapture* capture;
+/*	CvCapture* capture;
 	int c;
 
 	// Read the video stream
@@ -33,6 +33,22 @@ int main()
 	
 	cvReleaseCapture( &capture ); // release memory.	
     cvDestroyWindow("Video"); //destroy windows
-	
+*/
+
+	IplImage* image1 = cvLoadImage("image.jpg", CV_LOAD_IMAGE_COLOR);  // Loads an image from a file.
+	IplImage* image2 = cvLoadImage("image1.jpg", CV_LOAD_IMAGE_COLOR);  // Loads an image from a file.
+
+    if(image1== NULL) // Check for invalid input
+    {
+        printf("Could not open or find the image1\n") ;
+        return -1;
+    }
+    if(image2== NULL)  // Check for invalid input
+    {
+        printf("Could not open or find the image2\n") ;
+        return -1;
+    }
+    
+    
 	return 0;
 }
