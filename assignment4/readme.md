@@ -2,6 +2,7 @@
 - Captures movement:
 	1. Save
 	2. Sleep(5) to next scannning 
+- cvCreateVideoWriter
 
 ## Questions 
 - Er det menning at selvom der blev taget to billede lige efter hinannden uden at der var bevægelse, at der ikke er éns billeder.
