@@ -83,7 +83,7 @@ int compareImages(IplImage * image1, IplImage * image2){
 	}
 	cvReleaseImage(&res);   // OutOfMemoryError without releases
 	cvReleaseImage(&gray_res);
-	if(count > 0){ 
+	if(count > 50){ 
 		return 1;
 	} else{
 		return 0;
