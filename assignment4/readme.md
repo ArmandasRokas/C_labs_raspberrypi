@@ -19,7 +19,7 @@ void main(){
 	//printf("%s", __TIME__);
 }
 ```
-
+https://www.tutorialspoint.com/c_standard_library/time_h.htm
 ## Questions 
 - Er det menning at selvom der blev taget to billede lige efter hinannden uden at der var bevægelse, at der ikke er éns billeder.
 Dvs. Når jeg laver cvAbsDiff og tjekker intensities, så alle mere er end nul. Så skal jeg selv vurdere hvor meget skal jeg ignorere? 
