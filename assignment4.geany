@@ -29,10 +29,10 @@ long_line_column=72
 
 [files]
 current_page=0
-FILE_NAME_0=385;C;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Flab%2Fassignment4%2Fmain.c;0;4
+FILE_NAME_0=1526;C;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Flab%2Fassignment4%2Fmain.c;0;4
 
 [VTE]
-last_dir=/home/pi
+last_dir=/home/pi/lab/assignment4
 
 [build-menu]
 CFT_01_LB=_Build
