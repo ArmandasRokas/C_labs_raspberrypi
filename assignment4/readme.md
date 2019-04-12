@@ -2,7 +2,7 @@
 - Captures movement:
 	1. Save
 	2. Sleep(5) to next scannning  ( or make loop to check if 5 seconds is went from the last movement
-- time bibliotek 
+## time.h
 ```C
 #include <stdio.h>
 #include <time.h>
