@@ -29,7 +29,7 @@ long_line_column=72
 
 [files]
 current_page=0
-FILE_NAME_0=1256;C;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Flab%2Fassignment4%2Fmain.c;0;4
+FILE_NAME_0=385;C;0;EUTF-8;1;1;0;%2Fhome%2Fpi%2Flab%2Fassignment4%2Fmain.c;0;4
 
 [VTE]
 last_dir=/home/pi
@@ -39,3 +39,6 @@ CFT_01_LB=_Build
 CFT_01_CM=gcc -Wall -g -o "%e" "%f" `pkg-config --cflags --libs opencv`
 CFT_01_WD=
 filetypes=C;
+CFT_00_LB=_Compile
+CFT_00_CM=gcc -Wall -g -c "%f"
+CFT_00_WD=

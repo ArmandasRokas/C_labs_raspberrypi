@@ -2,21 +2,29 @@
 #include "opencv2/imgproc/imgproc_c.h"
 #include <stdio.h>                     // standard I/O - required for printf() function
 #include <unistd.h>
+#define DEBUG 1
 
 int compareImages(IplImage * image1, IplImage * image2);
- 
+
+/******************************
+ * Remember before start: sudo modprobe bcm2835-v4l2
+ * 
+ * ***************************/
 int main()
 {
-	
+	#if DEBUG
+		printf("Program is started\n");
+	#endif
   	CvCapture* capture;
 	//int c;
 
+	
+
 	// Read the video stream
-	capture = cvCaptureFromCAM( 0 );
+	capture = cvCaptureFromCAM(0);
 	//cvSetCaptureProperty( capture, CV_CAP_PROP_FRAME_WIDTH, 640 );
 	//cvSetCaptureProperty( capture, CV_CAP_PROP_FRAME_HEIGHT, 480 );
 	//cvNamedWindow("Video",CV_WINDOW_AUTOSIZE);
-	
 	
 	//cvSaveImage("image_test.jpg", image_test, 0);
 	
@@ -25,7 +33,7 @@ int main()
 		IplImage* currFrame = 0;
 		IplImage* prevFrame = 0;
 		currFrame = cvQueryFrame( capture );
-		prevFrame = cvCloneImage(currFrame);
+		prevFrame = cvCloneImage(currFrame); // have to clone in order to have older image
 		while(1)
 		{
 			currFrame = cvQueryFrame(capture);
@@ -41,9 +49,14 @@ int main()
 		//	currFrame = cvQueryFrame( capture );
 	
 			if(compareImages(currFrame,prevFrame)){
-				printf("catch");
+				#if DEBUG
+				printf("Found movement\n");
+				#endif
 			}
-			printf("Wroking\n");
+			
+			#if DEBUG
+			printf("Scanning\n");
+			#endif
 			//sleep(1);
 
 		//	cvShowImage( "Video", currFrame );
@@ -53,8 +66,9 @@ int main()
 		//	if( (char)c == 'c' ) { break; }		
 			cvCopy(currFrame, prevFrame, NULL);
 		}
+	} else {
+		printf("Error capturing camera\n");
 	}
-	
 	cvReleaseCapture( &capture ); // release memory.	
     cvDestroyWindow("Video"); //destroy windows
     return 0;
@@ -83,7 +97,7 @@ int compareImages(IplImage * image1, IplImage * image2){
 	}
 	cvReleaseImage(&res);   // OutOfMemoryError without releases
 	cvReleaseImage(&gray_res);
-	if(count > 50){ 
+	if(count > 10){ 
 		return 1;
 	} else{
 		return 0;
