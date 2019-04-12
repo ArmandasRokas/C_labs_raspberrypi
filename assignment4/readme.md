@@ -3,7 +3,23 @@
 	1. Save
 	2. Sleep(5) to next scannning  ( or make loop to check if 5 seconds is went from the last movement
 - time bibliotek 
+	```C
+	#include <stdio.h>
+#include <time.h>
 
+void main(){
+	time_t rawtime;
+	struct tm * timeinfo;
+
+	time(&rawtime);
+	timeinfo = localtime (&rawtime);
+
+	printf("Curr local time: %s", asctime(timeinfo));
+	//char * time = __TIME__;
+	//printf("%s", __TIME__);
+}
+
+	```
 
 ## Questions 
 - Er det menning at selvom der blev taget to billede lige efter hinannden uden at der var bevægelse, at der ikke er éns billeder.
