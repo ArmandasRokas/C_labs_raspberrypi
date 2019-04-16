@@ -1,3 +1,6 @@
+## Treshhold
+Jeg fandt det ikke nødvendigt at bruge cvThreshold, da det vil gøre programmet endnu langsommere, og jeg kunne gøre det manualt, bare tilføje til count, hvis intensity er højere end jeg tillader. 
+
 ## TODO 
 - Captures movement:
 	1. Save
