@@ -30,10 +30,3 @@ Dvs. hvis intensity mere end 50, så skal jeg betragte som forskel.
 	- Det vil jo være næsten umuligt i skoven, da alt ændre sig. Blader, belysninger., camera bevægelser osv.
 - Er det okey, at jeg convereterer absDiff til gray billede?
 ## Issues
-```mermaid
-graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
-```
