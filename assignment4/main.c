@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <time.h>
 #include <stdlib.h>
+#define THRESHOLD 50
 #define DEBUG 1
 
 int compareImages(IplImage * image1, IplImage * image2);
@@ -80,8 +81,8 @@ int main()
 		//	cvShowImage( "Video", currFrame );
 			
 			// Press 'c' to escape
-		//	c = cvWaitKey(100);
-		//	if( (char)c == 'c' ) { break; }		
+			//c = cvWaitKey(100);
+			//if( (char)c == 'c' ) { break; }		
 			cvCopy(currFrame, prevFrame, NULL);
 		}
 	} else {
@@ -109,7 +110,7 @@ int compareImages(IplImage * image1, IplImage * image2){
     cvCvtColor(res, gray_res, CV_RGB2GRAY );
 	int count = 0;
 	for(int i = 0; i < res->height*res->width;i++){
-	  if(gray_res->imageData[i] > 50){ // manual Thresholding
+	  if(gray_res->imageData[i] > THRESHOLD){ // manual Thresholding
 		count++; 
 	  }
 	}
