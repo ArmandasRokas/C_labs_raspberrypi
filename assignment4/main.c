@@ -23,23 +23,14 @@ int main()
 		printf("Program is started\n");
 	#endif
   	CvCapture* capture;
-	//int c;
-
 	time_t prevTime;
 	time_t currTime;
     struct tm * timeinfo;
-    
     IplImage* currFrame = 0;
 	IplImage* prevFrame = 0;
 
 	// Read the video stream
 	capture = cvCaptureFromCAM(0);
-	//cvSetCaptureProperty( capture, CV_CAP_PROP_FRAME_WIDTH, 640 );
-	//cvSetCaptureProperty( capture, CV_CAP_PROP_FRAME_HEIGHT, 480 );
-	//cvNamedWindow("Video",CV_WINDOW_AUTOSIZE);
-	
-	//cvSaveImage("image_test.jpg", image_test, 0);
-	
 	if( capture )
 	{
 
@@ -48,17 +39,7 @@ int main()
 		while(1)
 		{
 			currFrame = cvQueryFrame(capture);
-			//IplImage* currFrame = cvQueryFrame( capture );
-			
-			
-		//	if(!currFrame){
-			//	break;
-		//	}
-		//	sleep(1);
-			//IplImage* prevFrame = cvCloneImage(currFrame);
-		//	sleep(1);
-		//	currFrame = cvQueryFrame( capture );
-	
+
 			if(compareImages(currFrame,prevFrame)){
 				#if DEBUG
 				printf("Found movement\n");
@@ -76,20 +57,12 @@ int main()
 			#if DEBUG
 			printf("Scanning\n");
 			#endif
-			
-
-		//	cvShowImage( "Video", currFrame );
-			
-			// Press 'c' to escape
-			//c = cvWaitKey(100);
-			//if( (char)c == 'c' ) { break; }		
 			cvCopy(currFrame, prevFrame, NULL);
 		}
 	} else {
 		printf("Error capturing camera\n");
 	}
 	cvReleaseCapture( &capture ); // release memory.	
-    cvDestroyWindow("Video"); //destroy windows
     return 0;
     
 }
@@ -100,8 +73,6 @@ int main()
  * Return 0, if there are no differences
  * ***************************************************/
 int compareImages(IplImage * image1, IplImage * image2){
-	//cvSaveImage("image_test1.jpg", image1, 0);
-	//cvSaveImage("image_test2.jpg", image2, 0);
 	IplImage* res = cvCreateImage(cvGetSize(image1), 8, 3);
 	
 	cvAbsDiff(image1,image2,res);
@@ -136,10 +107,6 @@ void logTxt(struct tm * timeinfo){
         static const char mon_name[][4] = {
         "JAN", "FEB", "MAR", "APR","MAY", "JUN",
         "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
-      // time_t rawtime;
-      //  struct tm * timeinfo;
-       // time(&rawtime);
-      //  timeinfo = localtime(&rawtime);
 
         FILE * cfPtr;
         char * file_name = (char *) malloc(15*sizeof(char));
