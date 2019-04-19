@@ -30,6 +30,7 @@
 - [Rapport time and date](#rapport-time-and-date)
 - [Saving a picture](#saving-a-picture)
 - [Main function](#main-function)
+- [Acceptance testing](#acceptance-testing)
 - [Conclusion](#conclusion)
 
 
@@ -186,7 +187,7 @@ int main()
         } else {
                 printf("Error capturing camera\n");
         }
-    cvReleaseCapture( &capture ); // release memory.
+    cvReleaseCapture( &capture );
     return 0;
 }
 
@@ -194,6 +195,12 @@ int main()
 
 
 
+## Acceptance testing
+
+The accepantce test was made indoors (not in a forest), where was trying to detect a dog's activity from maximum 5 meters. The program was up and running for 10 hours without any problems or crashes.  It took also only very few wrong pictures, where was not a movment that took a place, but there was some changes in the lighting og similar.
+
+
+
 ## Conclusion
 
-The main goal to detect and record the activity was achieved. The program works like  it's expected, however it''s only tested indoors. 
+The main goal to detect and record the activity was achieved. The program works like  it's expected, however it's only tested indoors. 
