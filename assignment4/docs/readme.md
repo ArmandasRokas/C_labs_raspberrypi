@@ -14,32 +14,39 @@
 <p>Rapport animal activity in forest - recording animal activity with us of Raspberry Pi Camera </p></center>
 
 
-
 </br>
 </br>
-</br>
-</br>
-
 </br>
 
 **Table of contents**
 
 - [Intro](#intro)
+- [Main function](#main-function)
 - [Detect movement](#detect-movement)
 - [Rapport time and date](#rapport-time-and-date)
 - [Saving a picture](#saving-a-picture)
-- [Main function](#main-function)
 - [Acceptance testing](#acceptance-testing)
 - [Conclusion](#conclusion)
 
+</br>
 
-
-
- <div style="page-break-after: always;"></div>
+</br>
 
 ## Intro
 
 This document describes the implementation of "Rapport animal activity in forest - recording animal activity with us of Raspberry Pi Camera " solution. 
+
+## Main function
+
+First, the main function uses `cvCaptureFromCAM` to capture a video from `RaspberryPi` camera. 
+
+After that there are making two frames (the current frame and the previous frame) by cloning the current frame with `cvCloneImage` function.  These two frames is compared with `compareImages` function described below. 
+
+If there a difference in the frames, the function checks if there are more than 4 sec from the last recorded activity with `diffTime` function. If yes, so the time is registered and logged in the text file with `logTxt` function and a picture is saved with `logJpg` function.
+
+![alt text](C:/Users/Armandas/Documents/Softwareteknologi/2%20semester/C/rasp_lab/C_labs_raspberrypi/assignment4/docs/main.jpg "flowchart_comapreImages")
+
+
 
 ## Detect movement
 
@@ -48,30 +55,6 @@ Firstly, the function finds the difference between pictures with  `cvAbsDiff` fu
 After that, every pixel is checked if it has more intensity than the user-defined `THRESHOLD` constant.  If yes,  it adds 1 to `count` variable. The count variable is used to minimize the chance of reporting the false movement.   
 
 ![alt text](compareImages.jpg "flowchart_comapreImages")
-
-```c
-int compareImages(IplImage * image1, IplImage * image2){
-        IplImage* res = cvCreateImage(cvGetSize(image1), 8, 3);
-
-        cvAbsDiff(image1,image2,res);
-
-    IplImage* gray_res = cvCreateImage(cvGetSize(res), 8, 1);
-    cvCvtColor(res, gray_res, CV_RGB2GRAY );
-        int count = 0;
-        for(int i = 0; i < res->height*res->width;i++){
-          if(gray_res->imageData[i] > 50){ 
-                count++;
-          }
-        }
-        cvReleaseImage(&res);  
-        cvReleaseImage(&gray_res);
-        if(count > 10){
-                return 1;
-        } else{
-                return 0;
-        }
-}
-```
 
 ## Rapport time and date
 
@@ -140,63 +123,11 @@ void logJpg(struct tm * timeinfo, IplImage * image){
 }
 ```
 
-## Main function
-
-The main function sets all functions working together.  
-
-Firstly It uses `cvCaptureFromCAM` to capture a video from `RaspberryPi` camera. 
-
-After that there are making two frames (the current frame and the previous frame) by cloning the current frame with `cvCloneImage` function.  These two frames is compared with `compareImages` function described above. 
-
-If there a difference in the frames, the function checks if there are more than 4 sec from the last recorded activity with `diffTime` function. If yes, so the time is registered and logged in the text file with `logTxt` function and a picture is saved with `logJpg` function.
-
-![alt text](main.jpg "flowchart_comapreImages")
-
-
-
-```C
-int main()
-{
-        CvCapture* capture;
-        time_t prevTime;
-        time_t currTime;
-    	struct tm * timeinfo;
-    	IplImage* currFrame = 0;
-        IplImage* prevFrame = 0;
-        // Read the video stream
-        capture = cvCaptureFromCAM(0);
-        if( capture )
-        {
-                currFrame = cvQueryFrame( capture );
-                prevFrame = cvCloneImage(currFrame); 
-                while(1)
-                {
-                     currFrame = cvQueryFrame(capture);
-                     if(compareImages(currFrame,prevFrame)){
-                           time(&currTime);
-                           if (difftime(currTime, prevTime) > 4){
-                                  timeinfo = localtime(&currTime);
-                                  prevTime = currTime;
-                                  logTxt(timeinfo);
-                                  logJpg(timeinfo, currFrame);
-                                }
-                        }
-                        cvCopy(currFrame, prevFrame, NULL);
-                }
-        } else {
-                printf("Error capturing camera\n");
-        }
-    cvReleaseCapture( &capture );
-    return 0;
-}
-
-```
-
-
+ <div style="page-break-after: always;"></div>
 
 ## Acceptance testing
 
-The accepantce test was made indoors (not in a forest), where was trying to detect a dog's activity from maximum 5 meters. The program was up and running for 10 hours without any problems or crashes.  It took also only very few wrong pictures, where was not a movment that took a place, but there was some changes in the lighting og similar.
+The accepantce test was made indoors (not in a forest), where was trying to detect a dog's activity from maximum 5 meters. The program was up and running for 10 hours without any problems or crashes.  It took also only very few wrong pictures, where was not a movment that took a place, but there was some changes in the lightning og similar.
 
 
 
