@@ -123,7 +123,8 @@ int main(int argc, char **argv)
 	{
         usleep(200000); //delay for 0.2 seconds
      	unsigned int pin_value = *(gpio + 13) >> gSwitch; // read pin state (no debounce to make code more readable)
-		if (pin_value &= 1 == 1)
+		printf("%u", pin_value);
+        if (pin_value &= 1 == 1)
 		{
 			printf("Button pushed"); // print message
 			*(gpio + 7) |= 1 << gLED; // turn on and turn off the diode.		
