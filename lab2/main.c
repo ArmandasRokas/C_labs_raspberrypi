@@ -119,7 +119,7 @@ int main(int argc, char **argv)
 	unsigned int val = 10; // value used in the while loop so that the program runs for some time
 	
  
-	
+	printf("Before while");
     while(val > 0) 
 	{
         usleep(200000); //delay for 0.2 seconds
