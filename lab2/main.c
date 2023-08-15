@@ -53,15 +53,6 @@ int main(int argc, char **argv)
 	// Set up gpio pointer for direct register access
 	setup_io();
 
-	
-
-	/************************************************************************\
-	* You are about to change the GPIO settings of your computer.          *
-	* Mess this up and it will stop working!                               *
-	* It might be a good idea to 'sync' before running this program        *
-	* so at least you still have your code changes written to the SD-card! *
-	\************************************************************************/
- 
 	// Set GPIO pin 25 to output
 	INP_GPIO(gLED); // must use INP_GPIO before we can use OUT_GPIO
 	OUT_GPIO(gLED);
@@ -124,7 +115,7 @@ int main(int argc, char **argv)
 	{
         usleep(200000); //delay for 0.2 seconds
      	unsigned int pin_value = *(gpio + 13) >> gSwitch; // read pin state (no debounce to make code more readable)
-		printf("%u", pin_value);
+		printf("%u", pin_value &= 1);
         if (pin_value &= 1 == 1)
 		{
 			printf("Button pushed"); // print message
