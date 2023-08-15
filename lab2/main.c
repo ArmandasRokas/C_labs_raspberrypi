@@ -46,6 +46,7 @@ void setup_io();
 
 int main(int argc, char **argv)
 {
+    printf("Program starts.\n");
 	int gLED = 25;  // GPIO 25 - for diode 
 	int gSwitch = 23; // GPIO 23 - for switch
 
