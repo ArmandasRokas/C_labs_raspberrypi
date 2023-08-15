@@ -100,7 +100,7 @@ int main(int argc, char **argv)
 		
 		References: 
 			https://www.youtube.com/watch?v=5vnW4U5Vj0k
-
+/home/arm/OneDrive/Studies/Softwareteknologi/Courses/C_for_java_/uge11 - rasp/2019.04.16-RPI-lab_GPIO-code/lab2-GPIO/Solution/lab2-GPIO-Solution.c
 	*/
 	GPIO_PULL = 1 < 1; //TODO: Try to build the board without the pull up.
 	usleep(1);
