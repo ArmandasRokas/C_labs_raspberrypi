@@ -119,9 +119,9 @@ int main(int argc, char **argv)
         if (pin_value &= 1 == 0) // 0 Because it's pull up.
 		{
 			printf("Button pushed"); // print message
-			*(gpio + 7) |= 1 << gLED; // turn on and turn off the diode.		
+			*(gpio + 7) = 1 << gLED; // turn on and turn off the diode.		
 		} else {
-			*(gpio + 10) |= 1 << gLED; 
+			*(gpio + 10) = 1 << gLED; 
 		}
     }		
 	
