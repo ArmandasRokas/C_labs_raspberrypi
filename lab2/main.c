@@ -102,11 +102,9 @@ int main(int argc, char **argv)
 			https://www.youtube.com/watch?v=5vnW4U5Vj0k
 /home/arm/OneDrive/Studies/Softwareteknologi/Courses/C_for_java_/uge11 - rasp/2019.04.16-RPI-lab_GPIO-code/lab2-GPIO/Solution/lab2-GPIO-Solution.c
 	*/
-	// GPIO_PULL = 1 < 1; //TODO: Try to build the board without the pull up.
-	GPIO_PULL = 2;
+	GPIO_PULL = 1 << 1; //TODO: Try to build the board without the pull up.
 	usleep(1);
-	// GPIO_PULLCLK0 = 1 < gSwitch; // Select GPIO pin 23. GPIO Pin Pull-up/down Enable Clock 0
-	GPIO_PULLCLK0 = 0x800000; 
+	GPIO_PULLCLK0 = 1 << gSwitch; // Select GPIO pin 23. GPIO Pin Pull-up/down Enable Clock 0
 	usleep(1);
 	
 	unsigned int val = 10; // value used in the while loop so that the program runs for some time
@@ -118,7 +116,7 @@ int main(int argc, char **argv)
         usleep(200000); //delay for 0.2 seconds
      	unsigned int pin_value = *(gpio + 13) >> gSwitch; // read pin state (no debounce to make code more readable)
 		printf("%u\n", pin_value &= 1);
-        if (pin_value &= 1 == 1)
+        if (pin_value &= 1 == 0) // 0 Because it's pull up.
 		{
 			printf("Button pushed"); // print message
 			*(gpio + 7) |= 1 << gLED; // turn on and turn off the diode.		
