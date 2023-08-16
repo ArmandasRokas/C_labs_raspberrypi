@@ -102,9 +102,11 @@ int main(int argc, char **argv)
 			https://www.youtube.com/watch?v=5vnW4U5Vj0k
 /home/arm/OneDrive/Studies/Softwareteknologi/Courses/C_for_java_/uge11 - rasp/2019.04.16-RPI-lab_GPIO-code/lab2-GPIO/Solution/lab2-GPIO-Solution.c
 	*/
-	GPIO_PULL = 1 < 1; //TODO: Try to build the board without the pull up.
+	// GPIO_PULL = 1 < 1; //TODO: Try to build the board without the pull up.
+	GPIO_PULL = 2;
 	usleep(1);
-	GPIO_PULLCLK0 = 1 < gSwitch; // Select GPIO pin 23. GPIO Pin Pull-up/down Enable Clock 0
+	// GPIO_PULLCLK0 = 1 < gSwitch; // Select GPIO pin 23. GPIO Pin Pull-up/down Enable Clock 0
+	GPIO_PULLCLK0 = 0x800000; 
 	usleep(1);
 	
 	unsigned int val = 10; // value used in the while loop so that the program runs for some time
